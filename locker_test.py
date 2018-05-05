@@ -66,6 +66,13 @@ class TestUserData(unittest.TestCase):
         self.assertEqual(self.new_data.ident,1)
         self.assertEqual(self.new_data.website,"facebook.com")
         self.assertEqual(self.new_data.web_key,"poiii")
+
+    def test_add_password(self):
+        '''
+        Testing if the new website and password can be saved
+        '''
+        self.new_data.add_password()
+        self.assertEqual(len(UsersData.data_list),1)
         
 
 
