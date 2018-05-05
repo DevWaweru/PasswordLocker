@@ -25,7 +25,7 @@ class Credentials:
         '''
         for user in cls.users_list:
             if user.user_name == name and user.password == key:
-                print(user.id)
+                # print(user.identify)
                 return user
         return 0
 
