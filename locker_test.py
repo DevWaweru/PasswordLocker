@@ -15,7 +15,7 @@ class TestCredentials(unittest.TestCase):
         '''
         Cleans up after each test has run
         '''
-        Credentials.contact_list = []
+        Credentials.users_list = []
     
     def test_init(self):
         '''
@@ -25,5 +25,13 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_user.user_name,"richie")
         self.assertEqual(self.new_user.password,"uiui")
     
+    def test_create(self):
+        '''
+        Testing if the new credential is saved into the list
+        '''
+        self.new_user.create_account()
+        self.assertEqual(len(Credentials.users_list),1)
+    
+        
 if __name__ == "__main__":
     unittest.main()
