@@ -49,8 +49,10 @@ def main():
             print("Password: ")
             my_key = input()
             get_result = authenticate(my_login,my_key)
-            if get_result!=0:
-                print(f"{get_result.identify}")
+            if get_result == 0:
+                print("Invalid username and/or password")
+            elif get_result!=0:
+                print(f"{get_result.identify} has logged in")
             
         elif welcome_text == "ex".lower():
             break

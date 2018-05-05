@@ -29,3 +29,12 @@ class Credentials:
                 return user
         return 0
 
+class UsersData:
+    '''
+    Class that holds password data for the users
+    '''
+    def __init__(self,id):
+        self.id = Credentials.identify
+        
+    def add_user(self):
+        
