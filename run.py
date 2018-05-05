@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 
-from locker import Credentials
+from locker import Credentials,UsersData
 
 def new_account(id,user_name,password):
     '''
@@ -8,6 +8,7 @@ def new_account(id,user_name,password):
     '''
     new_user = Credentials(id,user_name,password)
     return new_user
+
 def create_user(user):
     '''
     Function that saves the user's credentials
@@ -19,6 +20,19 @@ def authenticate(username,passkey):
     Function responsible for signing in
     '''
     return Credentials.authenticate_account(username,passkey)
+
+def my_new_data(user_id,website,web_key):
+    '''
+    Function that creates new data for storing password
+    '''
+    new_data = UsersData(user_id,website,web_key)
+    return new_data
+
+def add_data(data):
+    '''
+    Function that saves the new data created
+    '''
+    data.add_password();
     
 def main():
     '''
@@ -51,14 +65,8 @@ def main():
             get_result = authenticate(my_login,my_key)
             if get_result == 0:
                 print("Invalid username and/or password")
-            elif get_result!=0:
-                print(f"Welcome {my_username}! What would you like to do?")
-                while True:
-                    print("""Type:
-                                ad - Add Password
-                                vp - View Passwords
-                            """)
-                    print(f"{get_result.identify} has logged in")
+            elif get_result!=0:                      
+                print(f"{get_result.identify} has logged in")
             
         elif welcome_text == "ex".lower():
             break
