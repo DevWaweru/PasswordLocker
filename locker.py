@@ -31,10 +31,17 @@ class Credentials:
 
 class UsersData:
     '''
-    Class that holds password data for the users
+    Class that holds website and password data for the users
     '''
-    def __init__(self,id):
-        self.id = Credentials.identify
-        
-    def add_user(self):
+    data_list = []
+    def __init__(self,ident,website,web_key):
+        self.ident = ident
+        self.website = website
+        self.web_key = web_key
+    
+    def add_password(self):
+        '''
+        creating a method that creates the username and password
+        '''
+        UsersData.data_list.append(self)
         
