@@ -33,6 +33,13 @@ def add_data(data):
     Function that saves the new data created
     '''
     data.add_password();
+
+def display_data(data):
+    '''
+    Function that displays the user data
+    '''
+    return UsersData.display_data(number)
+
     
 def main():
     '''
