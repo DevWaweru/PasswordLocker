@@ -1,4 +1,4 @@
-from locker import Credentials
+from locker import Credentials,UsersData
 import unittest
 
 class TestCredentials(unittest.TestCase):
@@ -42,6 +42,19 @@ class TestCredentials(unittest.TestCase):
 
         found_user = Credentials.authenticate_account("Test","Password")
         self.assertEqual(found_user.identify , test_account.identify)
+
+class TestUserData(unittest.TestCase):
+    '''
+    Test class that defines the test cases for creating websites log in credentials
+    '''
+    def setUp(self):
+        self.new_data = UsersData(1,"facebook.com","poiii")
+    
+    def tearDown(self):
+        UsersData.data_list = []
+    
+    
+
 
 if __name__ == "__main__":
     unittest.main()
