@@ -48,12 +48,25 @@ class TestUserData(unittest.TestCase):
     Test class that defines the test cases for creating websites log in credentials
     '''
     def setUp(self):
+        '''
+        Setting up the structure before each test
+        '''
         self.new_data = UsersData(1,"facebook.com","poiii")
     
     def tearDown(self):
+        '''
+        Cleans up the test after test is complete
+        '''
         UsersData.data_list = []
     
-    
+    def test_init(self):
+        '''
+        Test case to evaluate if the case has been initialized properly
+        '''
+        self.assertEqual(self.new_data.ident,1)
+        self.assertEqual(self.new_data.website,"facebook.com")
+        self.assertEqual(self.new_data.web_key,"poiii")
+        
 
 
 if __name__ == "__main__":
