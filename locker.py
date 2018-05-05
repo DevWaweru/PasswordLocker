@@ -4,11 +4,11 @@ class Credentials:
     '''
     users_list=[]
 
-    def __init__(self,id,user_name,password):
+    def __init__(self, identify, user_name, password):
         '''
         Initalizing the variables
         '''
-        self.id = id
+        self.identify = identify
         self.user_name = user_name
         self.password = password
 
@@ -19,13 +19,13 @@ class Credentials:
         Credentials.users_list.append(self)
     
     @classmethod
-    def authenticate_account(cls,name,key):
+    def authenticate_account(cls, name, key):
         '''
         Method that checks if the username and password are correct
         '''
         for user in cls.users_list:
             if user.user_name == name and user.password == key:
-                return user.id
-            return 0
+                print(user.id)
+                return user
+        return 0
 
-# class UserData:
