@@ -52,7 +52,13 @@ def main():
             if get_result == 0:
                 print("Invalid username and/or password")
             elif get_result!=0:
-                print(f"{get_result.identify} has logged in")
+                print(f"Welcome {my_username}! What would you like to do?")
+                while True:
+                    print("""Type:
+                                ad - Add Password
+                                vp - View Passwords
+                            """)
+                    print(f"{get_result.identify} has logged in")
             
         elif welcome_text == "ex".lower():
             break
