@@ -1,3 +1,4 @@
+import pyperclip
 class Credentials:
     '''
     Class that creates accounts and authenticates the users
@@ -65,4 +66,8 @@ class UsersData:
             if data.ident == number:
                 return True
         return False
-        
+    
+    @classmethod
+    def copy_password(cls,number,count):
+        found_password = UsersData.display_data(number,count)
+        pyperclip.copy(found_password)
