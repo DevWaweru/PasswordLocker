@@ -53,4 +53,14 @@ class UsersData:
         for password in cls.data_list:
             if password.ident == number:
                 return password
-            
+    
+    @classmethod
+    def existing_data(cls,number):
+        '''
+        Checks if data exists in the profile
+        '''
+        for data in cls.data_list:
+            if data.ident == number:
+                return True
+        return False
+        

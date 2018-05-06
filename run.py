@@ -38,7 +38,7 @@ def display_data(data):
     '''
     Function that displays the user data
     '''
-    return UsersData.display_data(number)
+    return UsersData.display_data(data)
 
     
 def main():
@@ -86,6 +86,11 @@ def main():
                         my_ident = get_result.identify
                         add_data(my_new_data(my_ident,my_website,my_webkey))
                         print(f"Password on {my_website} has been created")
+
+                    elif get_input == "vp":
+                        print("Your passwords are: \n")
+                        get_password = display_data(get_result.identify)
+                        print(f"{get_password.website} ---- {get_password.web_key}")
 
                     elif get_input == "lo":
                         break;
