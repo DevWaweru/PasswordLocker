@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.6
-
+import string,random
 from locker import Credentials,UsersData
 
 def new_account(id,user_name,password):
@@ -46,6 +46,18 @@ def data_existing(data):
     '''
     return UsersData.existing_data(data)
 
+def password_generator(count):
+    '''
+    Function that generates a password
+    '''
+    pass_list=[]
+    round = 1
+    while round<=count:
+        gen_password = random.choice(string.ascii_lowercase + string.digits + string.ascii_uppercase )
+        pass_list.append(gen_password)
+        round+=1
+    return ''.join(pass_list)
+
     
 def main():
     '''
@@ -54,12 +66,13 @@ def main():
     my_id=0
     # my_data_id = 0
     entries = []
+    # print(password_generator(10))
     print("\n")
     print("       Welcome to password Locker")
     print("-"*40)
     while True:
         print("Type:\n  cc to create new account\n  ss to sign in\n  ex to exit")
-        welcome_text = input().lower()
+        welcome_text = input().lower().strip()
         if welcome_text == "cc":
             print("Create account to continue:"+"\n"+"-"*25 + " \n Enter Username:")
             my_username = input()
@@ -96,14 +109,15 @@ def main():
                         print("Add website and password to store them securely:")
                         print("Enter Website:")
                         my_website = input()
-                        print("Generate password")
-                        my_webkey = input()
+                        print("How long do you want the password to be?")
+                        password_length = int(input("Length of password: "))
+                        my_webkey = password_generator(password_length)
                         # my_data_id = my_data_id+1
                         my_ident = get_result.identify
                         add_data(my_new_data(my_ident,entries[my_ident],my_website,my_webkey))
                         entries[my_ident]=entries[my_ident]+1
                         print("\n")
-                        print(f"***Password on {my_website} has been created***")
+                        print(f"***Your password for {my_website} is {my_webkey}***")
                         # print(f"This is the {entries[my_ident]} entry")
                         print("-"*45)
 
@@ -133,7 +147,10 @@ def main():
                         print("Invalid entry. Enter command again")
                         print("\n"+"-"*40)
 
-        elif welcome_text == "ex".lower():
+        elif welcome_text == "ex":
+            print("\n")
+            print(f"Goodbye!!")
+            print("-"*30)
             break
 
         else:
