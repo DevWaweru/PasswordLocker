@@ -58,6 +58,11 @@ def password_generator(count):
         round+=1
     return ''.join(pass_list)
 
+def copy_password(number,count):
+    '''
+    Function that copies the password to the clipboard
+    '''
+    UsersData.copy_password(number,count)
     
 def main():
     '''
@@ -103,7 +108,7 @@ def main():
                 print("\n")
                 print(f"Welcome {get_result.user_name}! What would you like to do?")
                 while True:
-                    print("Type:\n  ad - Add Password\n  vp - View Passwords\n  lo - Log Out")
+                    print("Type:\n  ad - Add Password\n  vp - View Passwords\n  cp - copy password to clipboard\n  lo - Log Out")
                     get_input = input().lower()
                     if get_input == "ad":
                         print("Add website and password to store them securely:")
@@ -118,7 +123,7 @@ def main():
                         entries[my_ident]=entries[my_ident]+1
                         print("\n")
                         print(f"***Your password for {my_website} is {my_webkey}***")
-                        # print(f"This is the {entries[my_ident]} entry")
+                        # print(f"This is the {entries[my_ident]} entry")MKBViStksX 0h5SzxJxQe fOTSiyEZuQ
                         print("-"*45)
 
                     elif get_input == "vp":
@@ -133,6 +138,24 @@ def main():
                                 data_my+=1
                             print("\nEnter a command to continue")
                             print("-"*20)
+                        else:
+                            print("\nYou have no data.\nType ad to generate some passwords")
+                            print("-"*20)
+
+                    elif get_input == "cp":
+                        if data_existing(get_result.identify):
+                            print("Enter the index of password you want to copy:")
+                            get_index = int(input("Enter index: "))-1
+                            if get_index >= entries[get_result.identify] or get_index<0:
+                                print("\n")
+                                print(f"{get_index+1} is invalid. Enter the correct index of password to copy")
+                                print("Type vp to confirm the correct index of password to copy")
+                                print("-"*30)
+                            elif get_index < entries[get_result.identify]:
+                                copy_password(get_result.identify,get_index)
+                                print("\n")
+                                print(f"Password {get_index+1} on the list has been copied, and is ready for pasting")
+                                print("-"*30)
                         else:
                             print("\nYou have no data.\nType ad to add some passwords")
                             print("-"*20)
