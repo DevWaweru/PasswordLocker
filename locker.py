@@ -70,4 +70,4 @@ class UsersData:
     @classmethod
     def copy_password(cls,number,count):
         found_password = UsersData.display_data(number,count)
-        pyperclip.copy(found_password)
+        pyperclip.copy(found_password.web_key)
