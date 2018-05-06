@@ -40,6 +40,12 @@ def display_data(data):
     '''
     return UsersData.display_data(data)
 
+def data_existing(data):
+    '''
+    Function that checks if user data exists
+    '''
+    return UsersData.existing_data(data)
+
     
 def main():
     '''
@@ -74,7 +80,7 @@ def main():
                 print("Invalid username and/or password")
             elif get_result!=0:
                 print(f"{get_result.identify} has logged in")
-                print(f"Welcome {my_username}! What would you like to do?")
+                print(f"Welcome {get_result.user_name}! What would you like to do?")
                 while True:
                     print("Type:\n  ad - Add Password\n  vp - View Passwords\n  lo - Log Out")
                     get_input = input().lower()
@@ -88,9 +94,12 @@ def main():
                         print(f"Password on {my_website} has been created")
 
                     elif get_input == "vp":
-                        print("Your passwords are: \n")
-                        get_password = display_data(get_result.identify)
-                        print(f"{get_password.website} ---- {get_password.web_key}")
+                        if data_existing(get_result.identify):
+                            print("Your passwords are: \n")
+                            get_password = display_data(get_result.identify)
+                            print(f"{get_password.website} ---- {get_password.web_key}")
+                        else:
+                            print("No data exists on this user")
 
                     elif get_input == "lo":
                         break;

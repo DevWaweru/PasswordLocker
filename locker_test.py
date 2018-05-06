@@ -51,7 +51,7 @@ class TestUserData(unittest.TestCase):
         '''
         Setting up the structure before each test
         '''
-        self.new_data = UsersData(1,"facebook.com","poiii")
+        self.new_data = UsersData(1,1,"facebook.com","poiii")
     
     def tearDown(self):
         '''
@@ -64,6 +64,7 @@ class TestUserData(unittest.TestCase):
         Test case to evaluate if the case has been initialized properly
         '''
         self.assertEqual(self.new_data.ident,1)
+        self.assertEqual(self.new_data.data_id,1)
         self.assertEqual(self.new_data.website,"facebook.com")
         self.assertEqual(self.new_data.web_key,"poiii")
 
@@ -79,7 +80,7 @@ class TestUserData(unittest.TestCase):
         Testing if the data can be displayed.
         '''
         self.new_data.add_password()
-        test_data = UsersData(1,"facebook.com","poiii")
+        test_data = UsersData(1,1,"facebook.com","poiii")
         test_data.add_password()
 
         data_found = UsersData.display_data(1)
@@ -90,7 +91,7 @@ class TestUserData(unittest.TestCase):
         Testing to check if the function for checking data works well
         '''
         self.new_data.add_password()
-        test_data = UsersData(1,"facebook.com","poiii")
+        test_data = UsersData(1,1,"facebook.com","poiii")
         test_data.add_password()
 
         data_exists = UsersData.existing_data(1)
