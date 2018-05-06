@@ -72,9 +72,23 @@ def main():
             get_result = authenticate(my_login,my_key)
             if get_result == 0:
                 print("Invalid username and/or password")
-            elif get_result!=0:                      
+            elif get_result!=0:
                 print(f"{get_result.identify} has logged in")
-            
+                print(f"Welcome {my_username}! What would you like to do?")
+                while True:
+                    print("Type:\n  ad - Add Password\n  vp - View Passwords\n  lo - Log Out")
+                    get_input = input().lower()
+                    if get_input == "ad":
+                        print("Enter Website:")
+                        my_website = input()
+                        print("Generate password")
+                        my_webkey = input()
+                        my_ident = get_result.identify
+                        add_data(my_new_data(my_ident,my_website,my_webkey))
+                        print(f"Password on {my_website} has been created")
+
+                    elif get_input == "lo":
+                        break;
         elif welcome_text == "ex".lower():
             break
 
