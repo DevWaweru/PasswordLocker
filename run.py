@@ -21,11 +21,11 @@ def authenticate(username,passkey):
     '''
     return Credentials.authenticate_account(username,passkey)
 
-def my_new_data(user_id,website,web_key):
+def my_new_data(user_id,data_id,website,web_key):
     '''
     Function that creates new data for storing password
     '''
-    new_data = UsersData(user_id,website,web_key)
+    new_data = UsersData(user_id,data_id,website,web_key)
     return new_data
 
 def add_data(data):
@@ -34,11 +34,11 @@ def add_data(data):
     '''
     data.add_password();
 
-def display_data(data):
+def display_data(data,number):
     '''
     Function that displays the user data
     '''
-    return UsersData.display_data(data)
+    return UsersData.display_data(data,number)
 
 def data_existing(data):
     '''
@@ -52,9 +52,12 @@ def main():
     Main function
     '''
     my_id=0
-    print("Hello, Welcome to password Locker.")
+    # my_data_id = 0
+    entries = []
+    print("\n")
+    print("       Welcome to password Locker")
+    print("-"*40)
     while True:
-        print("\n"+"-"*20)
         print("Type:\n  cc to create new account\n  ss to sign in\n  ex to exit")
         welcome_text = input().lower()
         if welcome_text == "cc":
@@ -62,11 +65,12 @@ def main():
             my_username = input()
             print(" Enter password:")
             my_password = input()
-            my_id+=1
 
             print("\n")
             create_user(new_account(my_id,my_username,my_password))
+            my_id+=1
             print(f"User {my_username} has been created. Login to continue..")
+            entries.append(0)
             print("-"*20)
 
         elif welcome_text == "ss".lower():
@@ -89,22 +93,40 @@ def main():
                         my_website = input()
                         print("Generate password")
                         my_webkey = input()
+                        # my_data_id = my_data_id+1
                         my_ident = get_result.identify
-                        add_data(my_new_data(my_ident,my_website,my_webkey))
+                        add_data(my_new_data(my_ident,entries[my_ident],my_website,my_webkey))
+                        entries[my_ident]=entries[my_ident]+1
                         print(f"Password on {my_website} has been created")
+                        print(f"This is the {entries[my_ident]} entry")
 
                     elif get_input == "vp":
                         if data_existing(get_result.identify):
                             print("Your passwords are: \n")
-                            get_password = display_data(get_result.identify)
-                            print(f"{get_password.website} ---- {get_password.web_key}")
+                            length = entries[get_result.identify]
+                            print(length)
+                            data_my=0
+                            while data_my < length:
+                                get_password = display_data(get_result.identify,data_my)
+                                print(f"{get_password.website} ---- {get_password.web_key}")
+                                data_my+=1
                         else:
                             print("No data exists on this user")
 
                     elif get_input == "lo":
-                        break;
+                        break
+                    
+                    else:
+                        print("Invalid entry. Enter command again")
+                        print("\n"+"-"*40)
+
         elif welcome_text == "ex".lower():
             break
+
+        else:
+            print("\n")
+            print("Invalid entry. Enter command again")
+            print("\n"+"-"*40)
 
 
 if __name__ == '__main__':

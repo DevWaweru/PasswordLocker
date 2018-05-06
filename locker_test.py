@@ -83,7 +83,7 @@ class TestUserData(unittest.TestCase):
         test_data = UsersData(1,1,"facebook.com","poiii")
         test_data.add_password()
 
-        data_found = UsersData.display_data(1)
+        data_found = UsersData.display_data(1,1)
         self.assertEqual(data_found.website,test_data.website)
     
     def test_data_exists(self):
