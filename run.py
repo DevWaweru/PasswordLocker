@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.6
-import string,random
+import string,random,time
 from locker import Credentials,UsersData
 
 def new_account(id,user_name,password):
@@ -32,7 +32,7 @@ def add_data(data):
     '''
     Function that saves the new data created
     '''
-    data.add_password();
+    data.add_password()
 
 def display_data(data,number):
     '''
@@ -80,9 +80,9 @@ def main():
         welcome_text = input().lower().strip()
         if welcome_text == "cc":
             print("Create account to continue:"+"\n"+"-"*25 + " \n Enter Username:")
-            my_username = input()
+            my_username = input("New Username: ")
             print(" Enter password:")
-            my_password = input()
+            my_password = input("New Password: ")
 
             print("\n")
             create_user(new_account(my_id,my_username,my_password))
@@ -94,10 +94,8 @@ def main():
         elif welcome_text == "ss".lower():
             print("Enter username and password to continue:")
             print("-"*40)
-            print("Username: ")
-            my_login = input()
-            print("Password: ")
-            my_key = input()
+            my_login = input("Username: ")
+            my_key = input("Password: ")
             get_result = authenticate(my_login,my_key)
             if get_result == 0:
                 print("\n")
@@ -121,6 +119,8 @@ def main():
                         my_ident = get_result.identify
                         add_data(my_new_data(my_ident,entries[my_ident],my_website,my_webkey))
                         entries[my_ident]=entries[my_ident]+1
+                        print("\nWait...")
+                        time.sleep(1.5)
                         print("\n")
                         print(f"***Your password for {my_website} is {my_webkey}***")
                         # print(f"This is the {entries[my_ident]} entry")MKBViStksX 0h5SzxJxQe fOTSiyEZuQ
