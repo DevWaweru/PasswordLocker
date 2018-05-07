@@ -34,7 +34,7 @@ The user will be met with the following commands while signing in:
     - Python 3.6 required
 
 ## Set-up and Installation
-    - Clone the [Repo](https://github.com/DevWaweru/PasswordLocker.git)
+    - Clone the [Repo](https://github.com/DevWaweru/PasswordLocker)
     - Install python 3.6
     - Run `python3.6 run.py`
 
